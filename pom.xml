@@ -96,11 +96,21 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
         <version>3.5.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+          </execution>
+        </executions>
         <configuration>
-          <mainClass>com.arm.App</mainClass>
-          <jvmArgs>
-            <jvmArg>--enable-preview</jvmArg>
-          </jvmArgs>
+          <executable>java</executable>
+          <arguments>
+            <argument>--enable-preview</argument>
+            <argument>-cp</argument>
+            <argument>${project.build.outputDirectory}</argument>
+            <argument>App</argument>
+          </arguments>
         </configuration>
       </plugin>
     </plugins>
