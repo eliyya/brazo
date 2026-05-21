@@ -5,6 +5,6 @@ package com.brazo;
  */
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        IO.println("Hello World!");
     }
 }
