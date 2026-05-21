@@ -3,11 +3,11 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.brazo</groupId>
-  <artifactId>brazo</artifactId>
+  <groupId>com.arm</groupId>
+  <artifactId>arm</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>brazo</name>
+  <name>arm</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -97,7 +97,7 @@
         <artifactId>exec-maven-plugin</artifactId>
         <version>3.5.0</version>
         <configuration>
-          <mainClass>com.brazo.App</mainClass>
+          <mainClass>com.arm.App</mainClass>
           <jvmArgs>
             <jvmArg>--enable-preview</jvmArg>
           </jvmArgs>
