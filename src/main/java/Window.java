@@ -7,7 +7,7 @@ public class Window extends JFrame {
     private final String[] nombres = {"Pinza", "Codo", "Hombro", "Base"};
     private final JSlider[] sliders = new JSlider[4];
     private final int[] valores = new int[4];
-    private String puertoNombre;
+    private FileOutputStream puerto;
 
     public Window() {
         setTitle("Brazo");
@@ -15,7 +15,7 @@ public class Window extends JFrame {
         setSize(500, 350);
         setLocationRelativeTo(null);
 
-        detectarPuerto();
+        abrirPuerto();
 
         JPanel panel = new JPanel(new GridLayout(4, 1, 10, 10));
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -51,16 +51,15 @@ public class Window extends JFrame {
         setVisible(true);
     }
 
-    private void detectarPuerto() {
+    private void abrirPuerto() {
         for (int i = 1; i <= 20; i++) {
             String name = "COM" + i;
             try {
-                new ProcessBuilder("mode", name, "BAUD=115200", "PARITY=N", "DATA=8", "STOP=1")
+                new ProcessBuilder("cmd", "/c", "mode", name + ":", "BAUD=115200", "PARITY=N", "DATA=8", "STOP=1")
                     .redirectErrorStream(true).start().waitFor();
-                var test = new FileOutputStream("\\\\.\\" + name);
-                test.close();
-                puertoNombre = name;
+                var stream = new FileOutputStream("\\\\.\\" + name);
                 System.out.println("Conectado a " + name);
+                puerto = stream;
                 return;
             } catch (Exception e) {
             }
@@ -69,11 +68,10 @@ public class Window extends JFrame {
     }
 
     private void enviarJson(String json) {
-        if (puertoNombre == null) return;
+        if (puerto == null) return;
         try {
-            var com = new FileOutputStream("\\\\.\\" + puertoNombre);
-            com.write((json + "\n").getBytes());
-            com.close();
+            puerto.write((json + "\n").getBytes());
+            puerto.flush();
         } catch (Exception e) {
         }
     }
