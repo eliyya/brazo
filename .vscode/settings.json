@@ -1,12 +1,4 @@
 {
-    "java.configuration.runtimes": [
-        {
-            "name": "JavaSE-25",
-            "path": "/usr/lib/jvm/java-25-temurin",
-            "default": true
-        }
-    ],
-    "java.jdt.ls.java.home": "/usr/lib/jvm/java-25-temurin",
     "java.compile.nullAnalysis.mode": "disabled",
     "java.configuration.updateBuildConfiguration": "automatic"
 }

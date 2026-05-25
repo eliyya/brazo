@@ -20,8 +20,8 @@
 #define NUM_SERVOS 4
 #define BUFFER_SIZE 256
 
-Servo servos[NUM_SERVOS];
-const int pins[NUM_SERVOS] = {9, 10, 11, 12};
+Servo servos[NUM_SERVOS]; // pinza, codo, hombro, base
+const int pins[NUM_SERVOS] = {A0, A1, A2, A3};
 
 char buffer[BUFFER_SIZE];
 int index = 0;
@@ -31,7 +31,6 @@ void setup() {
 
     for (int i = 0; i < NUM_SERVOS; i++) {
         servos[i].attach(pins[i]);
-        servos[i].write(90);
     }
 }
 
